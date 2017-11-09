@@ -1,5 +1,5 @@
 /**
- * query.js is a light library for query string conversion tool
+ * query.js is a query string conversion tool
  */
 
 let getPureQuery = () => {
