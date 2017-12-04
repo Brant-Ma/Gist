@@ -24,6 +24,15 @@ function gt(a, b) {
   return a > b
 }
 
+// Checks if `value` is greater than or equal to `other`.
+function gte(a, b) {
+  if (!(typeof a === 'string' && typeof b === 'string')) {
+    a = +a
+    b = +b
+  }
+  return a >= b
+}
+
 export default {
   castArray,
   eq,
