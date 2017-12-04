@@ -33,6 +33,15 @@ function gte(a, b) {
   return a >= b
 }
 
+// Checks if value is less than other.
+function lt(a, b) {
+  if (!(typeof a === 'string' && typeof b === 'string')) {
+    a = +a
+    b = +b
+  }
+  return a < b
+}
+
 export default {
   castArray,
   eq,
