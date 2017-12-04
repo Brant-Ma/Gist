@@ -2,54 +2,35 @@
  * lang.js is a learning works of Lodash/Lang
  */
 
-// Casts `value` as an array if it's not one.
-function castArray(...args) {
+// 值转数组
+let castArray = (...args) => {
   if (!args.length) {
     return []
   }
   return Array.isArray(args[0]) ? args[0] : [args[0]]
 }
 
-// Performs a SameValueZero comparison between two values to determine if they are equivalent.
-function eq(a, b) {
-  return (a === b) || (a !== a && b !== b)
+// 等值比较
+let eq = (a, b) => (a === b) || (a !== a && b !== b)
+
+// 大小比较
+let _createRelationalOperation = (operator) => {
+  return (a, b) => {
+    if (!(typeof a === 'string' && typeof b === 'string')) {
+      a = +a
+      b = +b
+    }
+    return operator(a, b)
+  }
 }
 
-// Checks if value is greater than other.
-function gt(a, b) {
-  if (!(typeof a === 'string' && typeof b === 'string')) {
-    a = +a
-    b = +b
-  }
-  return a > b
-}
+let gt = _createRelationalOperation((a, b) => a > b)
 
-// Checks if `value` is greater than or equal to `other`.
-function gte(a, b) {
-  if (!(typeof a === 'string' && typeof b === 'string')) {
-    a = +a
-    b = +b
-  }
-  return a >= b
-}
+let gte = _createRelationalOperation((a, b) => a >= b)
 
-// Checks if value is less than other.
-function lt(a, b) {
-  if (!(typeof a === 'string' && typeof b === 'string')) {
-    a = +a
-    b = +b
-  }
-  return a < b
-}
+let lt = _createRelationalOperation((a, b) => a < b)
 
-// Checks if `value` is less than or equal to `other`.
-function lte(a, b) {
-  if (!(typeof a === 'string' && typeof b === 'string')) {
-    a = +a
-    b = +b
-  }
-  return a <= b
-}
+let lte = _createRelationalOperation((a, b) => a <= b)
 
 export default {
   castArray,
