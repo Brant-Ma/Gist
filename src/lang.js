@@ -42,7 +42,20 @@ function lt(a, b) {
   return a < b
 }
 
+// Checks if `value` is less than or equal to `other`.
+function lte(a, b) {
+  if (!(typeof a === 'string' && typeof b === 'string')) {
+    a = +a
+    b = +b
+  }
+  return a <= b
+}
+
 export default {
   castArray,
   eq,
+  gt,
+  gte,
+  lt,
+  lte,
 }
